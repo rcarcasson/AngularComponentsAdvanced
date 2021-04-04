@@ -9,15 +9,17 @@ export class SimpleAlertViewComponent implements OnInit {
 
   constructor() { }
 
+  @Output() onDismiss: EventEmitter<void> = new EventEmitter<void>();
   @Input() message:string;
   @Input() title:string;
-  public visible:boolean = true;
+  public visible:boolean = false;
 
   ngOnInit() {
   }
 
   public dismiss(){
     this.visible = false;
+    this.onDismiss.emit();
   }
 
   public show(){
